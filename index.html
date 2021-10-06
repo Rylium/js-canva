@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>JS Canva Drawing Board</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>JS Canva Drawing Board</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-
-<body>
-  <section id="site-wrapper">
-    <canvas id="canvas"></canvas>
-    <div>
-      <input type="range" id="pencilWidth" name="volume" min="1" max="35" onchange="updateTextInput(this.value);" />
-      <label for="volume">Taille du crayon</label>
-      <input type="color" value="#ff0000" id="colorPicker" />
+  <body>
+    <section id="site-wrapper">
       <canvas id="canvas"></canvas>
-    </div>
-  </section>
+      <div>
+        <input
+          type="range"
+          id="pencilWidth"
+          name="volume"
+          min="1"
+          max="35"
+          onchange="updateTextInput(this.value);"
+        />
+        <label for="volume">Taille du crayon</label>
+        <input type="color" value="#ff0000" id="colorPicker" />
+        <canvas id="canvas"></canvas>
+      </div>
+    </section>
 
-  <script src="./script.js"></script>
-</body>
-
+    <script src="./script.js"></script>
+  </body>
 </html>
