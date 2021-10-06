@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-    console.log("Document chargé");
+    console.log("Canva chargé!");
 
     const canvas = document.querySelector('#canvas');
     const ctx = canvas.getContext("2d");
@@ -24,6 +24,14 @@ window.addEventListener('load', () => {
 
         //after start from new position
         ctx.beginPath();
+        // POST 
+        $.ajax({
+            type: "POST",
+            url: 'https://api.draw.codecolliders.dev/paths',
+            data: data,
+            success: success,
+            dataType: dataType
+        });
     }
 
     function draw(e) {
