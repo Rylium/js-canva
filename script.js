@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
 
     // Exécution de la fonction + Rafraîchissement des données 
     getDraw();
-    setInterval(getDraw, 2000);
+    //setInterval(getDraw, 2000);
 
     // Fonction au changement de couleur
     function onChangeColor() {
@@ -72,14 +72,18 @@ window.addEventListener("load", () => {
             },
             method: "post",
             data: JSON.stringify({
-                //path : 
+                path: ctx.lineTo(e.clientX, e.clientY),
                 strokeColor: ColorPicker,
-                lineWidth : ctx.lineWidth
+                lineWidth: ctx.lineWidth
             }),
             processData: false,
         }).done();
     }
 
+    $( "#canvas" ).click(function() {
+          sendDraw();
+        });
+    
     // Ajout d'event
     canvas.addEventListener("mousedown", startPosition);
     canvas.addEventListener("mouseup", finishedPosition);
