@@ -5,6 +5,8 @@ window.addEventListener("load", () => {
     const ctx = canvas.getContext("2d");
     let colorPicker = document.getElementById("colorPicker").addEventListener("change", onChangeColor);
 
+    let painting = false;
+
     function onChangeColor() {
         ctx.strokeStyle = this.value;
     }
