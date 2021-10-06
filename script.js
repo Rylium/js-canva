@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
     .addEventListener("change", onChangeColor);
 
   let painting = false;
-  let draws, path, lastId;
+  let draws, path, lastId, path1;
 
   // Récupération des données de l'Api
   function getDraw() {
@@ -18,11 +18,13 @@ window.addEventListener("load", () => {
       for (const draw of draws) {
         lastId = draw.id;
         path = draw.path;
-        console.log(path);
+        ctx.beginPath;
+        ctx.strokeStyle = draw.strokeColor;
       }
     });
   }
   getDraw();
+
   function onChangeColor() {
     ctx.strokeStyle = this.value;
   }
