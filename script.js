@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
     .addEventListener("change", onChangeColor);
 
   let painting = false;
-  let draws;
+  let draws, path, lastId;
 
   // Récupération des données de l'Api
   function getDraw() {
@@ -16,7 +16,9 @@ window.addEventListener("load", () => {
       console.log(data);
       draws = data;
       for (const draw of draws) {
-        console.log(draw.id);
+        lastId = draw.id;
+        path = draw.path;
+        console.log(path);
       }
     });
   }
