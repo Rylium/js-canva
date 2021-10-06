@@ -3,7 +3,6 @@ window.addEventListener("load", () => {
     // Déclaration des variables
     const canvas = document.querySelector("#canvas");
     const ctx = canvas.getContext("2d");
-    var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let colorPicker = document
         .getElementById("colorPicker")
         .addEventListener("change", onChangeColor);
@@ -27,22 +26,7 @@ window.addEventListener("load", () => {
         });
     }
 
-    // Ajout de dessins a l'API ( En Développement )
-    function sendDraw() {
-        $.ajax({
-            url: "https://api.draw.codecolliders.dev/paths/add",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            method: "post",
-            data: JSON.stringify({
-                //path : 
-                //strokeColor: 
-                //lineWidth : 
-            }),
-            processData: false,
-        }).done();
-    }
+
 
     // Exécution de la fonction + Rafraîchissement des données 
     getDraw();
@@ -66,9 +50,6 @@ window.addEventListener("load", () => {
 
         //after start from new position
         ctx.beginPath();
-
-        // POST
-        let apiData = "";
     }
 
     function draw(e) {
@@ -79,7 +60,24 @@ window.addEventListener("load", () => {
         ctx.lineCap = "round";
         ctx.lineTo(e.clientX, e.clientY);
         ctx.stroke();
-        
+
+    }
+
+    // Ajout de dessins a l'API ( En Développement )
+    function sendDraw() {
+        $.ajax({
+            url: "https://api.draw.codecolliders.dev/paths/add",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "post",
+            data: JSON.stringify({
+                //path : 
+                strokeColor: ColorPicker,
+                lineWidth : ctx.lineWidth
+            }),
+            processData: false,
+        }).done();
     }
 
     // Ajout d'event
