@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
         .getElementById("colorPicker")
         .addEventListener("change", onChangeColor);
     let painting = false;
-    let draws, path, lastId;
+    let draws, path, lastId, lineTo
 
 
     // Récupération des données de l'Api
@@ -27,16 +27,19 @@ window.addEventListener("load", () => {
         });
     }
 
-    // Ajout de dessins a l'API
+    // Ajout de dessins a l'API ( En Développement )
     function sendDraw() {
         $.ajax({
             url: "https://api.draw.codecolliders.dev/paths/add",
             headers: {
-                "x-api-key": token,
                 "Content-Type": "application/json",
             },
             method: "post",
-            data: JSON.stringify({}),
+            data: JSON.stringify({
+                //path : 
+                //strokeColor: 
+                //lineWidth : 
+            }),
             processData: false,
         }).done();
     }
@@ -76,6 +79,7 @@ window.addEventListener("load", () => {
         ctx.lineCap = "round";
         ctx.lineTo(e.clientX, e.clientY);
         ctx.stroke();
+        
     }
 
     // Ajout d'event
