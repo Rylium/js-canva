@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
 
     // Exécution de la fonction + Rafraîchissement des données 
     getDraw();
-    //setInterval(getDraw, 2000);
+    setInterval(getDraw, 2000);
 
     // Fonction au changement de couleur
     function onChangeColor() {
