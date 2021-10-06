@@ -1,9 +1,11 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: borger-box
+  margin: 0;
+  padding: 0;
+  box-sizing: borger-box;
 }
 
 #canvas {
-    border: 2px solid black;
+  border: 2px solid black;
+}
+#colorPicker {
 }
