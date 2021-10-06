@@ -3,13 +3,11 @@ window.addEventListener("load", () => {
 
     const canvas = document.querySelector('#canvas');
     const ctx = canvas.getContext("2d");
-    let colorPickerVal = document.getElementById('colorPicker').value;
+    let colorPicker = document.getElementById("colorPicker").addEventListener("change", onChangeColor);
 
-    function colorPick() {
-        ctx.strokeStyle = colorPickerVal;
+    function onChangeColor() {
+        ctx.strokeStyle = this.value;
     }
-    colorPick()
-
     //methods
     function startPosition(e) {
         painting = true;
