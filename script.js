@@ -5,8 +5,6 @@ window.addEventListener('load', () => {
     const ctx = canvas.getContext("2d");
 
     //resizing
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
 
     //variables
     let painting = false;
@@ -24,14 +22,9 @@ window.addEventListener('load', () => {
 
         //after start from new position
         ctx.beginPath();
+
         // POST 
-        $.ajax({
-            type: "POST",
-            url: 'https://api.draw.codecolliders.dev/paths',
-            data: data,
-            success: success,
-            dataType: dataType
-        });
+        let apiData = "";
     }
 
     function draw(e) {

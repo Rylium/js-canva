@@ -5,15 +5,11 @@
 }
 
 #site-wrapper {
-    height: 100vh;
-    width: 100vw;
-    padding: 1rem 3rem;
+    padding: 10px;
     overflow: hidden;
 }
 
 #canvas {
-    width: 100%;
-    height: 85vh;
     border: 2px solid black;
 }
 
