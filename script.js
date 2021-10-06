@@ -3,8 +3,12 @@ window.addEventListener('load', () => {
 
     const canvas = document.querySelector('#canvas');
     const ctx = canvas.getContext("2d");
+    let colorPickerVal = document.getElementById('colorPicker').value;
 
-    //resizing
+    function colorPick() {
+        ctx.strokeStyle = colorPickerVal;
+    }
+    colorPick()
 
     //variables
     let painting = false;
@@ -31,6 +35,7 @@ window.addEventListener('load', () => {
         if (!painting) return;
 
         //style
+
         ctx.lineWidth = document.getElementById('pencilWidth').value;
         ctx.lineCap = "round";
 
