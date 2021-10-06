@@ -8,11 +8,16 @@ window.addEventListener("load", () => {
     .addEventListener("change", onChangeColor);
 
   let painting = false;
+  let draws;
 
   // Récupération des données de l'Api
   function getDraw() {
     $.ajax("https://api.draw.codecolliders.dev/paths").done(function (data) {
       console.log(data);
+      draws = data;
+      for (const draw of draws) {
+        console.log(draw.id);
+      }
     });
   }
   getDraw();
