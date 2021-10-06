@@ -1,61 +1,71 @@
 window.addEventListener("load", () => {
-  console.log("Canva chargé!");
+    console.log("Canva chargé!");
 
-  const canvas = document.querySelector("#canvas");
-  const ctx = canvas.getContext("2d");
-  let colorPicker = document
-    .getElementById("colorPicker")
-    .addEventListener("change", onChangeColor);
+    const canvas = document.querySelector("#canvas");
+    const ctx = canvas.getContext("2d");
+    var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
-  let painting = false;
-  let draws, path, lastId;
+    let colorPicker = document
+        .getElementById("colorPicker")
+        .addEventListener("change", onChangeColor);
 
-  // Récupération des données de l'Api
-  function getDraw() {
-    $.ajax("https://api.draw.codecolliders.dev/paths").done(function (data) {
-      console.log(data);
-      draws = data;
-      for (const draw of draws) {
-        lastId = draw.id;
-        path = draw.path;
-        console.log(path);
-      }
-    });
-  }
-  getDraw();
-  function onChangeColor() {
-    ctx.strokeStyle = this.value;
-  }
-  //methods
-  function startPosition(e) {
-    painting = true;
+    let painting = false;
+    let draws, path, lastId;
 
-    //when click only
-    draw(e);
-  }
+    // Récupération des données de l'Api
+    function getDraw(lastId) {
+        $.ajax("https://api.draw.codecolliders.dev/paths").done(function (data) {
+            // console.log(data);
+            draws = data;
+            for (const draw of draws) {
+                lastId = draw.id;
+                path = draw.path;
 
-  function finishedPosition() {
-    painting = false;
+                path.forEach(element => console.log(element[1]));
+                // Pour chaqué element, redéfinir chaque sous-élément sous "element" et choisir d'afficher sa première propriété (x)
+                path.forEach(element => console.log(element[2])); // (y)
+            }
+        });
+    }
+    getDraw();
 
-    //after start from new position
-    ctx.beginPath();
 
-    // POST
-    let apiData = "";
-  }
+    function onChangeColor() {
+        ctx.strokeStyle = this.value;
+    }
 
-  function draw(e) {
-    if (!painting) return;
+    //methods
+    function startPosition(e) {
+        painting = true;
+        console.log(imgData)
+        //when click only
+        draw(e);
+    }
 
-    //style
-    ctx.lineWidth = document.getElementById("pencilWidth").value;
-    ctx.lineCap = "round";
-    ctx.lineTo(e.clientX, e.clientY);
-    ctx.stroke();
-  }
+    function finishedPosition() {
+        painting = false;
 
-  //listener
-  canvas.addEventListener("mousedown", startPosition);
-  canvas.addEventListener("mouseup", finishedPosition);
-  canvas.addEventListener("mousemove", draw);
+        //after start from new position
+        ctx.beginPath();
+
+        // POST
+        let apiData = "";
+    }
+
+
+    function draw(e) {
+        if (!painting) return;
+
+
+        //style
+        ctx.lineWidth = document.getElementById("pencilWidth").value;
+        ctx.lineCap = "round";
+        ctx.lineTo(e.clientX, e.clientY);
+        ctx.stroke();
+    }
+
+    //listener
+    canvas.addEventListener("mousedown", startPosition);
+    canvas.addEventListener("mouseup", finishedPosition);
+    canvas.addEventListener("mousemove", draw);
 });
