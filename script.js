@@ -1,8 +1,9 @@
 window.addEventListener('load', () => {
-    console.log("document loaded");
+    console.log("Document chargé");
 
     const canvas = document.querySelector('#canvas');
     const ctx = canvas.getContext("2d");
+    const pencilWidth = document.getElementById('textbox_id').value
 
     //resizing
     canvas.height = window.innerHeight;
@@ -14,7 +15,6 @@ window.addEventListener('load', () => {
     //methods
     function startPosition(e) {
         painting = true;
-        console.log("in progress...");
 
         //when click only
         draw(e)
@@ -22,7 +22,6 @@ window.addEventListener('load', () => {
 
     function finishedPosition() {
         painting = false;
-        console.log("end paint");
 
         //after start from new position
         ctx.beginPath();
@@ -32,7 +31,7 @@ window.addEventListener('load', () => {
         if (!painting) return;
 
         //style
-        ctx.lineWidth = 10;
+        ctx.lineWidth = 5;
         ctx.lineCap = "round";
 
         ctx.lineTo(e.clientX, e.clientY);
