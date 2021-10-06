@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
     console.log("Canva chargé!");
 
     const canvas = document.querySelector('#canvas');
@@ -10,15 +10,12 @@ window.addEventListener('load', () => {
     }
     colorPick()
 
-    //variables
-    let painting = false;
-
     //methods
     function startPosition(e) {
         painting = true;
 
         //when click only
-        draw(e)
+        draw(e);
     }
 
     function finishedPosition() {
@@ -27,7 +24,7 @@ window.addEventListener('load', () => {
         //after start from new position
         ctx.beginPath();
 
-        // POST 
+        // POST
         let apiData = "";
     }
 
@@ -35,17 +32,15 @@ window.addEventListener('load', () => {
         if (!painting) return;
 
         //style
-
         ctx.lineWidth = document.getElementById('pencilWidth').value;
         ctx.lineCap = "round";
-
         ctx.lineTo(e.clientX, e.clientY);
         ctx.stroke();
-
     }
 
+
     //listener
-    canvas.addEventListener('mousedown', startPosition);
-    canvas.addEventListener('mouseup', finishedPosition);
-    canvas.addEventListener('mousemove', draw);
-})
+    canvas.addEventListener("mousedown", startPosition);
+    canvas.addEventListener("mouseup", finishedPosition);
+    canvas.addEventListener("mousemove", draw);
+});
