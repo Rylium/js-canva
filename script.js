@@ -28,6 +28,21 @@ window.addEventListener("load", () => {
     });
   }
 
+  //Ajout de dessins a l'API
+  function sendDraw() {
+    $.ajax({
+      url: "https://api.draw.codecolliders.dev/paths/add",
+      headers: {
+        "x-api-key": token,
+        "Content-Type": "application/json",
+      },
+      method: "post",
+      data: JSON.stringify({
+        image_id: idChat,
+      }),
+      processData: false,
+    }).done(displayFavourite);
+  }
   getDraw();
 
   function onChangeColor() {
